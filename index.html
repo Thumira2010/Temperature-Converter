@@ -18,19 +18,18 @@
         <span id="toUnit">Fahrenheit</span>
       </div>
 
-      <input type="number" id="temperatureInput" placeholder="Enter temperature" />
+      <label id="inputLabel" for="temperatureInput">Celsius:</label>
+      <input type="number" id="temperatureInput" placeholder="Enter temperature" oninput="convert()" />
 
-      <div class="buttons">
-        <button onclick="convert()">Convert</button>
-        <button onclick="reset()">Reset</button>
+      <label id="outputLabel" for="resultText">Fahrenheit:</label>
+      <div class="output-container">
+        <input id="resultText" readonly />
+        <button id="copyBtn" onclick="copyResult()">📋</button>
       </div>
 
-      <div class="result-area">
-        <p id="resultText"></p>
-        <button id="copyBtn" onclick="copyResult()">📋 Copy</button>
-      </div>
-
+      <p id="resultWords" class="result-words"></p>
       <p id="error" class="error"></p>
+      <button id="resetBtn" onclick="reset()">Reset</button>
     </div>
   </div>
 
