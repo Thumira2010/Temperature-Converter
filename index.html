@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>🌡️ Temperature Converter</h1>
+
+      <div class="converter-top">
+        <span id="fromUnit">Celsius</span>
+        <button id="swapBtn" title="Swap Conversion">⇄</button>
+        <span id="toUnit">Fahrenheit</span>
+      </div>
+
+      <input type="number" id="temperatureInput" placeholder="Enter temperature" />
+
+      <div class="buttons">
+        <button onclick="convert()">Convert</button>
+        <button onclick="reset()">Reset</button>
+      </div>
+
+      <div class="result-area">
+        <p id="resultText"></p>
+        <button id="copyBtn" onclick="copyResult()">📋 Copy</button>
+      </div>
+
+      <p id="error" class="error"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
