@@ -1,120 +1,163 @@
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffeea9;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      max-width: 400px;
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #7b4019;
-    }
-    .converter-top {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-      gap: 1rem;
-    }
-    .converter-top span {
-      font-weight: 600;
-      color: #ff7d29;
-      transition: opacity 0.3s ease;
-    }
-    #swapBtn {
-      background-color: #ffbf78;
-      border: none;
-      padding: 0.3rem 0.6rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    label {
-      display: block;
-      margin: 0.5rem 0 0.2rem;
-      font-weight: 600;
-      color: #7b4019;
-      transition: opacity 0.3s ease;
-    }
-    input[type="number"],
-    input[readonly] {
-      width: 100%;
-      padding: 0.6rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-    input[readonly] {
-      background-color: #f9f9f9;
-      font-weight: 600;
-      color: #333;
-    }
-    .output-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    #copyBtn {
-      position: absolute;
-      right: 0;
-      top: 0;
-      background-color: #ffbf78;
-      border: none;
-      padding: 0.1rem 0.7rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1.4rem;
-      height: 100%;
-      max-height: 39px;
-      transition: background-color 0.3s ease;
-    }
-    #resultWords {
-      margin-top: 0.5rem;
-      font-style: italic;
-      color: #7b4019;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    #resultWords.visible {
-      opacity: 1;
-    }
-    #error {
-      color: red;
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-    #resetBtn {
-      width: 100%;
-      padding: 0.6rem;
-      margin-top: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #ff7d29;
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      transition: opacity 0.3s ease;
-    }
-    #resetBtn:hover {
-      opacity: 0.8;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffeea9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-    @keyframes pop {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
+.container {
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
 
-    #copyBtn.clicked {
-        background-color: #ff7d29;
-    }
+h1 {
+  text-align: center;
+  color: #7b4019;
+}
+
+.converter-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.converter-top span {
+  font-weight: 600;
+  color: #ff7d29;
+  transition: opacity 0.3s ease;
+}
+
+#swapBtn {
+  background-color: #ffbf78;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: 600;
+  color: #7b4019;
+}
+
+input[type="number"],
+input[readonly] {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+input[readonly] {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  color: #333;
+}
+
+.output-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#copyBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #ffbf78;
+  border: none;
+  padding: 0.1rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  height: 100%;
+  max-height: 39px;
+  transition: background-color 0.3s ease;
+}
+
+#copyBtn.clicked {
+  background-color: #ff7d29;
+}
+.fade {
+  transition: opacity 0.3s ease;
+}
+
+.fade.hidden {
+  opacity: 0;
+}
+
+#resultWords {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #7b4019;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#resultWords.visible {
+  opacity: 1;
+}
+
+#error {
+  color: red;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+#resetBtn {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff7d29;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+#resetBtn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #swapBtn, #copyBtn, #resetBtn {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .output-container {
+    flex-direction: row;
+  }
+
+  .output-container input {
+    flex: 1;
+  }
+}

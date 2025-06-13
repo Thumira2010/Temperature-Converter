@@ -11,24 +11,23 @@
   <div class="container">
     <div class="card">
       <h1>🌡️ Temperature Converter</h1>
-
       <div class="converter-top">
-        <span id="fromUnit">Celsius</span>
-        <button id="swapBtn" title="Swap Conversion">⇄</button>
-        <span id="toUnit">Fahrenheit</span>
+      <span id="fromUnit" class="fade">Celsius</span>
+        <button id="swapBtn" title="Swap Conversion" aria-label="Swap conversion direction">⇄</button>
+        <span id="toUnit" class="fade">Fahrenheit</span>    
       </div>
-
-      <label for="temperatureInput" id="inputLabel">Celsius:</label>
+      <label for="temperatureInput" id="inputLabel" class="fade">Celsius:</label>
       <input type="number" id="temperatureInput" placeholder="Enter temperature" oninput="convert()" />
 
-      <label for="resultText" id="outputLabel">Fahrenheit:</label>
+      <label for="resultText" id="outputLabel" class="fade">Fahrenheit:</label>
       <div class="output-container">
         <input id="resultText" readonly />
-        <button id="copyBtn" onclick="copyResult()">📋</button>
+        <button id="copyBtn" aria-label="Copy result" onclick="copyResult()">📋</button>
       </div>
 
       <p id="resultWords" class="result-words"></p>
       <p id="error" class="error"></p>
+
       <button id="resetBtn" onclick="reset()">Reset</button>
     </div>
   </div>
