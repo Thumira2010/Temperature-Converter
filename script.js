@@ -1,4 +1,4 @@
-let isCtoF = true;
+    let isCtoF = true;
 
     function convert() {
       const input = document.getElementById("temperatureInput").value.trim();
@@ -7,6 +7,7 @@ let isCtoF = true;
       const error = document.getElementById("error");
 
       resultText.value = "";
+      resultWords.classList.remove("visible");
       resultWords.innerText = "";
       error.innerText = "";
 
@@ -27,29 +28,53 @@ let isCtoF = true;
         resultText.value = `${result.toFixed(2)} °C`;
         resultWords.innerText = `${temp} degrees Fahrenheit = ${result.toFixed(2)} degrees Celsius`;
       }
+
+      setTimeout(() => resultWords.classList.add("visible"), 10);
     }
 
     function swapUnits() {
       isCtoF = !isCtoF;
-      document.getElementById("fromUnit").innerText = isCtoF ? "Celsius" : "Fahrenheit";
-      document.getElementById("toUnit").innerText = isCtoF ? "Fahrenheit" : "Celsius";
-      document.getElementById("inputLabel").innerText = isCtoF ? "Celsius:" : "Fahrenheit:";
-      document.getElementById("outputLabel").innerText = isCtoF ? "Fahrenheit:" : "Celsius:";
+      const fromUnit = document.getElementById("fromUnit");
+      const toUnit = document.getElementById("toUnit");
+      const inputLabel = document.getElementById("inputLabel");
+      const outputLabel = document.getElementById("outputLabel");
+
+      fromUnit.style.opacity = 0;
+      toUnit.style.opacity = 0;
+      inputLabel.style.opacity = 0;
+      outputLabel.style.opacity = 0;
+
+      setTimeout(() => {
+        fromUnit.innerText = isCtoF ? "Celsius" : "Fahrenheit";
+        toUnit.innerText = isCtoF ? "Fahrenheit" : "Celsius";
+        inputLabel.innerText = isCtoF ? "Celsius:" : "Fahrenheit:";
+        outputLabel.innerText = isCtoF ? "Fahrenheit:" : "Celsius:";
+        fromUnit.style.opacity = 1;
+        toUnit.style.opacity = 1;
+        inputLabel.style.opacity = 1;
+        outputLabel.style.opacity = 1;
+      }, 150);
+
       reset();
     }
 
     function reset() {
       document.getElementById("temperatureInput").value = "";
       document.getElementById("resultText").value = "";
-      document.getElementById("resultWords").innerText = "";
+      const resultWords = document.getElementById("resultWords");
+      resultWords.classList.remove("visible");
+      resultWords.innerText = "";
       document.getElementById("error").innerText = "";
     }
 
     function copyResult() {
+      const copyBtn = document.getElementById("copyBtn");
       const text = document.getElementById("resultText").value;
       if (!text) return;
       navigator.clipboard.writeText(text).then(() => {
-        alert("Copied to clipboard!");
+        copyBtn.classList.add("clicked");
+        setTimeout(() => copyBtn.classList.remove("clicked"), 300);
+
       });
     }
 
